@@ -9,12 +9,11 @@ def predict_proba(url):
 
     reg = joblib.load(os.path.dirname(__file__) + '/phishing_clf.pkl')
 
-    url_ = pd.DataFrame([tmp_.split(';')], columns=['mileage', 'state', 'make', 'model', 'antiguedad'])
+    url_ = pd.DataFrame([url.split(';')], columns=['mileage', 'state', 'make', 'model', 'antiguedad'])
 
-    p1 = reg.predict(url_)[0,1]
+    p1 = reg.predict(url_)
 
     return p1
-
 
 if __name__ == "__main__":
 
